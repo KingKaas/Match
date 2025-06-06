@@ -65,7 +65,8 @@
     <h2>Well done, <span id="finalName"></span>!</h2>
     <p>Attempts: <span id="attemptsCount"></span></p>
     <p>Score: <span id="finalScore"></span></p>
-    <button onclick="location.reload()">Play Again</button>
+    <p>Restarted: <span id="restartCount"></span> times</p>
+    <button onclick="handleRestart()">Play Again</button>
   </div>
 
   <script>
@@ -82,6 +83,7 @@
     let timerInterval;
     let score = 0;
     let combo = 0;
+    let restartCount = 0;
 
     function startGame() {
       const nameInput = document.getElementById("playerName");
@@ -169,6 +171,12 @@
       document.getElementById("finalName").textContent = playerName;
       document.getElementById("attemptsCount").textContent = attempts;
       document.getElementById("finalScore").textContent = score + (timeout ? " (Time Out)" : "");
+      document.getElementById("restartCount").textContent = restartCount;
+    }
+
+    function handleRestart() {
+      restartCount++;
+      location.reload();
     }
   </script>
 </body>
